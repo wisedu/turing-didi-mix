@@ -1,6 +1,6 @@
-# turing-didi-mix
+# turing-didi
 
-> A Vue.js project
+> A Vue.js project cube-ui 与 mand-mobile的合集
 
 ## Build Setup
 
