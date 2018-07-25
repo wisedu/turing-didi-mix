@@ -55,8 +55,8 @@ export default {
       default:'请输入内容'
     },
     maxlength:{
-      type:[String,Number],
-      default:'11'
+      type:Number,
+      default:6
     },
     readonly:{
       type:Boolean,
@@ -85,10 +85,6 @@ export default {
     required:{
       type:Boolean,
       default:false
-    },
-    key:{
-      type:String,
-      default:''
     }
   },
   methods:{

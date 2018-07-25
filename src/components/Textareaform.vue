@@ -67,10 +67,6 @@ export default {
     required:{
       type:Boolean,
       default:false
-    },
-    key:{
-      type:String,
-      default:''
     }
   },
   methods:{
