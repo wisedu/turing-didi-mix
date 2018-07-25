@@ -1,0 +1,176 @@
+{
+    "name": "T_PXXX_XSJBXX_QUERY",
+    "modelName": "T_PXXX_XSJBXX",
+    "appName": "student_app1.2",
+    "url": "dataTable/T_PXXX_XSJBXX_QUERY.do",
+    "type": "list",
+    "controls": [
+    {
+        "name": "WID",
+        "dataType": "String",
+        "caption": "WID",
+        "checkType": "",
+        "groupName": "无1",
+        "checkType": "custom[number]",
+        "dataSize": 40
+    },
+    {
+        "name": "XSBH",
+        "dataType": "String",
+        "caption": "学生编号",
+        "xtype": "uploadsingleimage",
+        "groupName": "1学生2",
+        "dataSize": 40
+    },
+    {
+        "name": "XH",
+        "dataType": "String",
+        "caption": "学号",
+        "required": true,
+        "quickSearch": true,
+        "readonly": true,
+        "groupName": "单标题",
+        "dataSize": 20
+    },
+    {
+        "name": "XM",
+        "dataType": "String",
+        "caption": "姓名学号学号号",
+        "required": true,
+        "xtype": "text",
+        "quickSearch": true,
+        "groupName": "单标题",
+        "dataSize": 90
+    },
+    {
+        "name": "XBDM",
+        "dataType": "String",
+        "caption": "性别",
+        "xtype": "multi-select",
+        "quickSearch": true,
+        "url": "/mock/dic.json",
+        "required": false,
+        "search.xtype": "multi-select",
+        "groupName": "单标题",
+        "dataSize": 1
+    },
+    {
+        "name": "CSRQ",
+        "dataType": "Timestamp",
+        "caption": "出生日期",
+        "xtype": "date-full",
+        "required": true,
+        "search.xtype": "date-range",
+        "dataSize": 7,
+        "format": "yyyy-MM-dd HH:mm:ss",
+        "groupName": "单标题",
+        "JSONParam":
+        {
+            "min": "1990-01-01 00:00:00"
+        }
+    },
+    {
+        "name": "MZDM",
+        "dataType": "String",
+        "caption": "民族",
+        "xtype": "radiolist",
+        "groupName": "单标题",
+        "readonly": true,
+        "dataSize": 2,
+        "url": "/mock/dic.json"
+    },
+    {
+        "name": "SFZJH",
+        "dataType": "String",
+        "caption": "身份证号",
+        "xtype": "checkboxlist",
+        "dataSize": 2,
+        "url": "/mock/dic.json",
+        "form.linkageBy": "XBDM",
+        "groupName": "单标题",
+        "form.linkageName": "XBDM"
+    },
+    {
+        "name": "CSDDM",
+        "dataType": "String",
+        "caption": "出生地",
+        "xtype": "tree",
+        "url": "/mock/place.json",
+        "groupName": "单标题",
+        "dataSize": 6
+    },{
+        "name": "SYDDM",
+        "dataType": "String",
+        "caption": "生源地",
+        "xtype": "multi-tree",
+        "url": "/mock/place.json",
+        "groupName": "单标题",
+        "dataSize": 6
+    },
+    {
+        "name": "DWDM",
+        "dataType": "String",
+        "caption": "院系",
+        "form.linkageName": "DWDM",
+        "xtype": "select",
+        "form.linkageBy": "DWDM",
+        "quickSearch": true,
+        "groupName": "双标题",
+        "dataSize": 6,
+        "url": "/mock/dic.json"
+    },
+    {
+        "name": "XZ",
+        "dataType": "int",
+        "caption": "学制",
+        "checkType": "integer+",
+        "quickSearch": true,
+        "groupName": "双标题",
+        "dataSize": 6
+    },
+    {
+        "name": "XSZP",
+        "dataType": "String",
+        "caption": "学生照片",
+        "xtype": "switcher",
+        "groupName": "双标题",
+        "dataSize": 40
+    },
+    {
+        "name": "ZSFJ",
+        "dataType": "String",
+        "caption": "学生附件\n",
+        "xtype": "uploadfile",
+        "required": true,
+        "JSONParam": "{'size': 2048, 'limit':1}",
+        "col": null,
+        "groupName": "双标题",
+        "dataSize": 40
+    },
+    {
+        "name": "XF",
+        "dataType": "double",
+        "xtype": "multi-buttonlist",
+        "caption": "学费",
+        "groupName": "双标题",
+        "url": "/mock/button.json"
+    },
+    {
+        "name": "YLCS",
+        "dataType": "BigString",
+        "caption": "压力测试",
+        "grid.JSONParam": "",
+        "xtype": "textarea",
+        "readonly": false,
+        "required": true,
+        "groupName": "无标题1",
+        "JSONParam":"{'direction':'vertical'}",
+        "dataSize": 4000
+    },
+    {
+        "name": "NUMBER_TEST",
+        "dataType": "double",
+        "groupName": "无标题1",
+        "caption": "数字测试"
+    }]
+}

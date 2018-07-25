@@ -3,7 +3,8 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-
+var PostCompilePlugin = require('webpack-post-compile-plugin')
+var TransformModulesPlugin = require('webpack-transform-modules-plugin')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -13,14 +14,15 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './src/index.js'
   },
   output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    path: path.resolve(__dirname, './dist'),
+    filename: 'build.js',
+    publicPath: 'dist',
+    library: 'input', // library指定的就是你使用require时的模块名，这里便是require("PayKeyboard") 
+    libraryTarget: 'umd', //libraryTarget会生成不同umd的代码,可以只是commonjs标准的，也可以是指amd标准的，也可以只是通过script标签引入的。 
+    umdNamedDefine: true 
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -33,13 +35,21 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
+        use:[{
+          loader: 'vue-loader',
+          options: vueLoaderConfig
+        },{
+          loader: 'weexui-loader',
+          options: {
+              prefix: true
+          }
+        }]
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
+        exclude: /node_modules(?!(\/|\\).*(weex).*)/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -67,6 +77,10 @@ module.exports = {
       }
     ]
   },
+  plugins:[
+    new PostCompilePlugin(),
+    new TransformModulesPlugin()
+  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).

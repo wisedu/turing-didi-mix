@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <img src="./assets/logo.png"> -->
     <router-view/>
   </div>
 </template>
 
 <script>
+import 'mand-mobile/lib-vw/mand-mobile.css';
+import 'cube-ui/lib/cube.min.css';
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    
+  }
 }
 </script>
 
